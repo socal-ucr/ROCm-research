@@ -1,0 +1,3 @@
+[submodule "atmi"]
+	path = atmi
+	url = https://github.com/socal-ucr/atmi.git
