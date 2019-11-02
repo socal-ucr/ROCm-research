@@ -1,3 +1,6 @@
 [submodule "atmi"]
 	path = atmi
 	url = https://github.com/socal-ucr/atmi.git
+[submodule "clang-ocl"]
+	path = clang-ocl
+	url = https://github.com/socal-ucr/clang-ocl.git
