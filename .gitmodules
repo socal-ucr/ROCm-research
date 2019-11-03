@@ -4,3 +4,51 @@
 [submodule "clang-ocl"]
 	path = clang-ocl
 	url = https://github.com/socal-ucr/clang-ocl.git
+[submodule "hcc"]
+	path = hcc
+	url = https://github.com/socal-ucr/hcc.git
+[submodule "HIP"]
+	path = HIP
+	url = https://github.com/socal-ucr/HIP.git
+[submodule "llvm_amd-common"]
+	path = llvm_amd-common
+	url = https://github.com/socal-ucr/llvm_amd-common.git
+[submodule "RCP"]
+	path = RCP
+	url = https://github.com/socal-ucr/RCP.git
+[submodule "ROC-smi"]
+	path = ROC-smi
+	url = https://github.com/socal-ucr/ROC-smi.git
+[submodule "rocALUTION"]
+	path = rocALUTION
+	url = https://github.com/socal-ucr/rocALUTION.git
+[submodule "ROCK-Kernel-Driver"]
+	path = ROCK-Kernel-Driver
+	url = https://github.com/socal-ucr/ROCK-Kernel-Driver.git
+[submodule "rocm-cmake"]
+	path = rocm-cmake
+	url = https://github.com/socal-ucr/rocm-cmake.git
+[submodule "ROCm-CompilerSupport"]
+	path = ROCm-CompilerSupport
+	url = https://github.com/socal-ucr/ROCm-CompilerSupport.git
+[submodule "ROCm-Device-Libs"]
+	path = ROCm-Device-Libs
+	url = https://github.com/socal-ucr/ROCm-Device-Libs.git
+[submodule "ROCm-OpenCL-Runtime"]
+	path = ROCm-OpenCL-Runtime
+	url = https://github.com/socal-ucr/ROCm-OpenCL-Runtime.git
+[submodule "rocminfo"]
+	path = rocminfo
+	url = https://github.com/socal-ucr/rocminfo.git
+[submodule "rocm_bandwidth_test"]
+	path = rocm_bandwidth_test
+	url = https://github.com/socal-ucr/rocm_bandwidth_test.git
+[submodule "rocm_smi_lib"]
+	path = rocm_smi_lib
+	url = https://github.com/socal-ucr/rocm_smi_lib.git
+[submodule "ROCR-Runtime"]
+	path = ROCR-Runtime
+	url = https://github.com/socal-ucr/ROCR-Runtime.git
+[submodule "ROCT-Thunk-Interface"]
+	path = ROCT-Thunk-Interface
+	url = https://github.com/socal-ucr/ROCT-Thunk-Interface.git
