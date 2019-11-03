@@ -49,3 +49,6 @@
 [submodule "hcc"]
 	path = hcc
 	url = https://github.com/socal-ucr/hcc.git
+[submodule "HIP"]
+	path = HIP
+	url = git@github.com:socal-ucr/HIP.git
