@@ -4,9 +4,6 @@
 [submodule "clang-ocl"]
 	path = clang-ocl
 	url = https://github.com/socal-ucr/clang-ocl.git
-[submodule "RCP"]
-	path = RCP
-	url = https://github.com/socal-ucr/RCP.git
 [submodule "ROC-smi"]
 	path = ROC-smi
 	url = https://github.com/socal-ucr/ROC-smi.git
