@@ -40,9 +40,6 @@
 [submodule "rocm_smi_lib"]
 	path = rocm_smi_lib
 	url = https://github.com/socal-ucr/rocm_smi_lib.git
-[submodule "ROCR-Runtime"]
-	path = ROCR-Runtime
-	url = https://github.com/socal-ucr/ROCR-Runtime.git
 [submodule "ROCT-Thunk-Interface"]
 	path = ROCT-Thunk-Interface
 	url = https://github.com/socal-ucr/ROCT-Thunk-Interface.git
@@ -52,3 +49,6 @@
 [submodule "hcc"]
 	path = hcc
 	url = git@github.com:socal-ucr/hcc.git
+[submodule "ROCR-Runtime"]
+	path = ROCR-Runtime
+	url = git@github.com:socal-ucr/ROCR-Runtime.git
