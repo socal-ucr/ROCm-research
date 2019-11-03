@@ -4,9 +4,6 @@
 [submodule "clang-ocl"]
 	path = clang-ocl
 	url = https://github.com/socal-ucr/clang-ocl.git
-[submodule "hcc"]
-	path = hcc
-	url = https://github.com/socal-ucr/hcc.git
 [submodule "HIP"]
 	path = HIP
 	url = https://github.com/socal-ucr/HIP.git
@@ -52,3 +49,6 @@
 [submodule "ROCT-Thunk-Interface"]
 	path = ROCT-Thunk-Interface
 	url = https://github.com/socal-ucr/ROCT-Thunk-Interface.git
+[submodule "hcc"]
+	path = hcc
+	url = https://github.com/socal-ucr/hcc.git
