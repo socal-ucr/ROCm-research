@@ -16,9 +16,6 @@
 [submodule "rocALUTION"]
 	path = rocALUTION
 	url = https://github.com/socal-ucr/rocALUTION.git
-[submodule "ROCK-Kernel-Driver"]
-	path = ROCK-Kernel-Driver
-	url = https://github.com/socal-ucr/ROCK-Kernel-Driver.git
 [submodule "rocm-cmake"]
 	path = rocm-cmake
 	url = https://github.com/socal-ucr/rocm-cmake.git
@@ -52,3 +49,6 @@
 [submodule "ROCR-Runtime"]
 	path = ROCR-Runtime
 	url = git@github.com:socal-ucr/ROCR-Runtime.git
+[submodule "ROCK-Kernel-Driver"]
+	path = ROCK-Kernel-Driver
+	url = git@github.com:socal-ucr/ROCK-Kernel-Driver.git
