@@ -31,9 +31,6 @@
 [submodule "rocm_smi_lib"]
 	path = rocm_smi_lib
 	url = https://github.com/socal-ucr/rocm_smi_lib.git
-[submodule "ROCT-Thunk-Interface"]
-	path = ROCT-Thunk-Interface
-	url = https://github.com/socal-ucr/ROCT-Thunk-Interface.git
 [submodule "HIP"]
 	path = HIP
 	url = git@github.com:socal-ucr/HIP.git
@@ -49,3 +46,6 @@
 [submodule "llvm"]
 	path = llvm
 	url = git@github.com:socal-ucr/llvm.git
+[submodule "ROCT-Thunk-Interface"]
+	path = ROCT-Thunk-Interface
+	url = git@github.com:socal-ucr/ROCT-Thunk-Interface.git
