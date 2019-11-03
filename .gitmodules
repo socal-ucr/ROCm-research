@@ -4,9 +4,6 @@
 [submodule "clang-ocl"]
 	path = clang-ocl
 	url = https://github.com/socal-ucr/clang-ocl.git
-[submodule "llvm_amd-common"]
-	path = llvm_amd-common
-	url = https://github.com/socal-ucr/llvm_amd-common.git
 [submodule "RCP"]
 	path = RCP
 	url = https://github.com/socal-ucr/RCP.git
@@ -52,3 +49,6 @@
 [submodule "ROCK-Kernel-Driver"]
 	path = ROCK-Kernel-Driver
 	url = git@github.com:socal-ucr/ROCK-Kernel-Driver.git
+[submodule "llvm"]
+	path = llvm
+	url = git@github.com:socal-ucr/llvm.git
