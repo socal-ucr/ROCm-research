@@ -18,7 +18,7 @@
 	url = https://github.com/socal-ucr/ROCm-CompilerSupport.git
 [submodule "ROCm-Device-Libs"]
 	path = ROCm-Device-Libs
-	url = https://github.com/socal-ucr/ROCm-Device-Libs.git
+	url = git@github.com:socal-ucr/ROCm-Device-Libs.git
 [submodule "ROCm-OpenCL-Runtime"]
 	path = ROCm-OpenCL-Runtime
 	url = https://github.com/socal-ucr/ROCm-OpenCL-Runtime.git
