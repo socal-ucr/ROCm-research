@@ -43,9 +43,9 @@
 [submodule "ROCK-Kernel-Driver"]
 	path = ROCK-Kernel-Driver
 	url = git@github.com:socal-ucr/ROCK-Kernel-Driver.git
-[submodule "llvm"]
-	path = llvm
-	url = git@github.com:socal-ucr/llvm.git
 [submodule "ROCT-Thunk-Interface"]
 	path = ROCT-Thunk-Interface
 	url = git@github.com:socal-ucr/ROCT-Thunk-Interface.git
+[submodule "llvm-project"]
+	path = llvm-project
+	url = git@github.com:socal-ucr/llvm-project.git
