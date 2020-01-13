@@ -1,5 +1,5 @@
   ```
-  0. packages
+0. packages
 
 pkg-config
 vim
@@ -13,6 +13,14 @@ rename
 z3
 libxml2-dev
 ocaml
+
+0.1 ROCK-kernel
+wget -qO - http://repo.radeon.com/rocm/apt/debian/rocm.gpg.key | sudo apt-key add -
+echo deb [arch=amd64] http://repo.radeon.com/rocm/apt/debian/ xenial main | sudo tee /etc/apt/sources.list.d/rocm.list
+sudo apt-get update && sudo apt-get install rock-dkms hsa-ext-rocr-dev libhsa-ext-finalize64
+sudo update-initramfs -u
+sudo reboot
+
 
 build rocm stack
 1. llvm-project
