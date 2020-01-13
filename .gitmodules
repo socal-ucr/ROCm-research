@@ -1,15 +1,6 @@
-[submodule "atmi"]
-	path = atmi
-	url = https://github.com/socal-ucr/atmi.git
-[submodule "clang-ocl"]
-	path = clang-ocl
-	url = https://github.com/socal-ucr/clang-ocl.git
 [submodule "ROC-smi"]
 	path = ROC-smi
 	url = git@github.com:socal-ucr/ROC-smi.git
-[submodule "rocALUTION"]
-	path = rocALUTION
-	url = https://github.com/socal-ucr/rocALUTION.git
 [submodule "rocm-cmake"]
 	path = rocm-cmake
 	url = git@github.com:socal-ucr/rocm-cmake.git
@@ -25,9 +16,6 @@
 [submodule "rocminfo"]
 	path = rocminfo
 	url = git@github.com:socal-ucr/rocminfo.git
-[submodule "rocm_bandwidth_test"]
-	path = rocm_bandwidth_test
-	url = https://github.com/socal-ucr/rocm_bandwidth_test.git
 [submodule "rocm_smi_lib"]
 	path = rocm_smi_lib
 	url = git@github.com:socal-ucr/rocm_smi_lib.git
