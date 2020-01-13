@@ -24,7 +24,7 @@
 	url = https://github.com/socal-ucr/ROCm-OpenCL-Runtime.git
 [submodule "rocminfo"]
 	path = rocminfo
-	url = https://github.com/socal-ucr/rocminfo.git
+	url = git@github.com:socal-ucr/rocminfo.git
 [submodule "rocm_bandwidth_test"]
 	path = rocm_bandwidth_test
 	url = https://github.com/socal-ucr/rocm_bandwidth_test.git
