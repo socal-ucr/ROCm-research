@@ -6,7 +6,7 @@
 	url = https://github.com/socal-ucr/clang-ocl.git
 [submodule "ROC-smi"]
 	path = ROC-smi
-	url = https://github.com/socal-ucr/ROC-smi.git
+	url = git@github.com:socal-ucr/ROC-smi.git
 [submodule "rocALUTION"]
 	path = rocALUTION
 	url = https://github.com/socal-ucr/rocALUTION.git
@@ -30,7 +30,7 @@
 	url = https://github.com/socal-ucr/rocm_bandwidth_test.git
 [submodule "rocm_smi_lib"]
 	path = rocm_smi_lib
-	url = https://github.com/socal-ucr/rocm_smi_lib.git
+	url = git@github.com:socal-ucr/rocm_smi_lib.git
 [submodule "HIP"]
 	path = HIP
 	url = git@github.com:socal-ucr/HIP.git
