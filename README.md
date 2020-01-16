@@ -88,7 +88,7 @@ cmake -DCMAKE_INSTALL_PREFIX=/opt/rocm/hip -DHIP_COMPILER=clang -DCMAKE_BUILD_TY
 make -j 8
 
 9. Compile Program
-LD_LIBRARY_PATH=/opt/rocm/lib;/opt/rocm/comgr/lib
+echo LD_LIBRARY_PATH=/opt/rocm/comgr/lib
 $(HIPCC) --amdgpu-target=gfx900  -Wl,-rpath=/opt/rocm/lib -Wl,-rpath=/opt/rocm/hip/lib -Wl,-rpath=/opt/rocm/comgr/lib --hip-device-lib-path=/opt/rocm/rocdl/lib 
 ```  
 
