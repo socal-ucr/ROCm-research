@@ -91,5 +91,23 @@ make -j 8
 echo LD_LIBRARY_PATH=/opt/rocm/comgr/lib
 $(HIPCC) --amdgpu-target=gfx900  -Wl,-rpath=/opt/rocm/lib -Wl,-rpath=/opt/rocm/hip/lib -Wl,-rpath=/opt/rocm/comgr/lib --hip-device-lib-path=/opt/rocm/rocdl/lib 
 ```  
+In order to add support for passing vector<bool> from the userspace, support must be added for logging purposes.  To use this add a template function in HIP/src/trace_helper.h 
+
+```
+template<>
+inline std::string ToString(std::vector<bool> v) {
+    std::ostringstream ss;
+
+    for (unsigned int i=0; i < v.size(); i++) {
+	ss << ' ' << v.at(i);
+    }
+
+    return ss.str();
+}
+```
+
+
+
+
 
 
