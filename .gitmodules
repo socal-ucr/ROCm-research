@@ -1,6 +1,3 @@
-[submodule "ROC-smi"]
-	path = ROC-smi
-	url = git@github.com:socal-ucr/ROC-smi.git
 [submodule "rocm-cmake"]
 	path = rocm-cmake
 	url = git@github.com:socal-ucr/rocm-cmake.git
@@ -10,9 +7,6 @@
 [submodule "ROCm-Device-Libs"]
 	path = ROCm-Device-Libs
 	url = git@github.com:socal-ucr/ROCm-Device-Libs.git
-[submodule "ROCm-OpenCL-Runtime"]
-	path = ROCm-OpenCL-Runtime
-	url = https://github.com/socal-ucr/ROCm-OpenCL-Runtime.git
 [submodule "rocminfo"]
 	path = rocminfo
 	url = git@github.com:socal-ucr/rocminfo.git
