@@ -4,18 +4,12 @@
 [submodule "ROCm-Device-Libs"]
 	path = ROCm-Device-Libs
 	url = git@github.com:socal-ucr/ROCm-Device-Libs.git
-[submodule "rocminfo"]
-	path = rocminfo
-	url = git@github.com:socal-ucr/rocminfo.git
 [submodule "rocm_smi_lib"]
 	path = rocm_smi_lib
 	url = git@github.com:socal-ucr/rocm_smi_lib.git
 [submodule "HIP"]
 	path = HIP
 	url = git@github.com:socal-ucr/HIP.git
-[submodule "hcc"]
-	path = hcc
-	url = git@github.com:socal-ucr/hcc.git
 [submodule "ROCR-Runtime"]
 	path = ROCR-Runtime
 	url = git@github.com:socal-ucr/ROCR-Runtime.git
@@ -31,3 +25,6 @@
 [submodule "rocm-cmake"]
 	path = rocm-cmake
 	url = git@github.com:RadeonOpenCompute/rocm-cmake.git
+[submodule "rocminfo"]
+	path = rocminfo
+	url = git@github.com:RadeonOpenCompute/rocminfo.git
