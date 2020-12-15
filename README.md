@@ -13,6 +13,7 @@ rename
 z3
 libxml2-dev
 ocaml
+libtinfo-dev 
 
 0.1 ROCK-kernel
 wget -qO - http://repo.radeon.com/rocm/apt/debian/rocm.gpg.key | sudo apt-key add -
@@ -52,7 +53,7 @@ sudo make install-dev
 4. ROCR-Runtime
 mkdir build
 cd build
-cmake -DCMAKE_INSTALL_PREFEX=/opt/rocm -DHSAKMT_INC_PATH=/opt/rocm/include -DHSAKMT_LIB_PATH=/opt/rocm/lib ..
+cmake -DCMAKE_INSTALL_PREFIX=/opt/rocm -DHSAKMT_INC_PATH=/opt/rocm/include -DHSAKMT_LIB_PATH=/opt/rocm/lib ..
 make 
 sudo make install
 
@@ -60,12 +61,6 @@ sudo make install
 mkdir build && cd build
 cmake -DCMAKE_PREFIX_PATH=/opt/rocm -DROCM_DIR=/opt/rocm -DCMAKE_INSTALL_BINDIR=/opt/rocm/bin ..
 make
-sudo make install
-
-5. hcc
-mkdir build && cd build
-cmake -DCMAKE_BUILD_TYPE=Release ..
-make -j 16
 sudo make install
 
 6. Rocm-Device-Libs
