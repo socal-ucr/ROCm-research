@@ -28,3 +28,9 @@
 [submodule "rocminfo"]
 	path = rocminfo
 	url = git@github.com:RadeonOpenCompute/rocminfo.git
+[submodule "ROCclr"]
+	path = ROCclr
+	url = git@github.com:ROCm-Developer-Tools/ROCclr.git
+[submodule "ROCm-OpenCL-Runtime"]
+	path = ROCm-OpenCL-Runtime
+	url = git@github.com:RadeonOpenCompute/ROCm-OpenCL-Runtime.git
