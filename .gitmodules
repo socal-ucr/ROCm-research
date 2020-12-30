@@ -19,9 +19,6 @@
 [submodule "ROCT-Thunk-Interface"]
 	path = ROCT-Thunk-Interface
 	url = git@github.com:socal-ucr/ROCT-Thunk-Interface.git
-[submodule "amd-llvm-project"]
-	path = amd-llvm-project
-	url = git@github.com:ROCm-Developer-Tools/amd-llvm-project.git
 [submodule "rocm-cmake"]
 	path = rocm-cmake
 	url = git@github.com:RadeonOpenCompute/rocm-cmake.git
@@ -31,6 +28,9 @@
 [submodule "ROCclr"]
 	path = ROCclr
 	url = git@github.com:ROCm-Developer-Tools/ROCclr.git
+[submodule "llvm-project"]
+	path = llvm-project
+	url = git@github.com:RadeonOpenCompute/llvm-project.git
 [submodule "ROCm-OpenCL-Runtime"]
 	path = ROCm-OpenCL-Runtime
 	url = git@github.com:RadeonOpenCompute/ROCm-OpenCL-Runtime.git
