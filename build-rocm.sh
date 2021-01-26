@@ -81,5 +81,9 @@ make install
 cd ${cwd}
 
 mkdir ${INSTALL_DIR}/rocm/.info
-touch ${INSTALL_DIR}/rocm/.info/version
-touch ${INSTALL_DIR}/rocm/.info/version-dev
+echo 4.0.0 > ${INSTALL_DIR}/rocm/.info/version
+echo 4.0.0 > ${INSTALL_DIR}/rocm/.info/version-dev
+echo 4.0.0 > ${INSTALL_DIR}/rocm/.info/version-utils
+
+ln -s ${INSTALL_DIR}/rocm/hip/include/hip ${INSTALL_DIR}/rocm/.
+
