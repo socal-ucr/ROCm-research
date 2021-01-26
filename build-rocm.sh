@@ -19,7 +19,7 @@ CXX_DIR=${INSTALL_DIR}/rocm/llvm/bin/clang++
 cd rocm-cmake
 rm -rf build
 mkdir build && cd build
-CC=${CC_DIR}CXX=${CXX_DIR} cmake -DCMAKE_INSTALL_PREFIX=${INSTALL_DIR}/rocm ..
+CC=${CC_DIR} CXX=${CXX_DIR} cmake -DCMAKE_INSTALL_PREFIX=${INSTALL_DIR}/rocm ..
 cmake --build . --target install
 cd ${cwd}
 
@@ -28,14 +28,6 @@ rm -rf build
 mkdir build && cd build
 CC=${CC_DIR} CXX=${CXX_DIR} cmake -DCMAKE_PREFIX_PATH=${INSTALL_DIR}/rocm/llvm -DLLVM_DIR=${INSTALL_DIR}/rocm/llvm -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=${INSTALL_DIR}/rocm/rocdl ..
 make -j
-make install
-cd ${cwd}
-
-cd rocminfo
-rm -rf build
-mkdir build && cd build
-CC=${CC_DIR} CXX=${CXX_DIR} cmake -DCMAKE_PREFIX_PATH=${INSTALL_DIR}/rocm  -DCMAKE_INSTALL_BINDIR=${INSTALL_DIR}/rocm/bin ..
-make
 make install
 cd ${cwd}
 
@@ -79,3 +71,15 @@ CC=${CC_DIR} CXX=${CXX_DIR} cmake -DCMAKE_INSTALL_PREFIX=${INSTALL_DIR}/rocm/hip
 make -j
 make install
 cd ${cwd}
+
+cd rocminfo
+rm -rf build
+mkdir build && cd build
+CC=${CC_DIR} CXX=${CXX_DIR} cmake -DCMAKE_PREFIX_PATH=${INSTALL_DIR}/rocm  -DCMAKE_INSTALL_BINDIR=${INSTALL_DIR}/rocm/bin ..
+make
+make install
+cd ${cwd}
+
+mkdir ${INSTALL_DIR}/rocm/.info
+touch ${INSTALL_DIR}/rocm/.info/version
+touch ${INSTALL_DIR}/rocm/.info/version-dev
