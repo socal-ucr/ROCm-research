@@ -3,7 +3,7 @@
 INSTALL_DIR=/home/mchow009/.opt 
 cwd=$(pwd)
 
-#git submodule update --init --recursive 
+git submodule update --init --recursive 
 
 cd llvm-project
 rm -rf build
