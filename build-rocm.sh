@@ -3,7 +3,7 @@
 INSTALL_DIR=/home/mchow009/.opt 
 cwd=$(pwd)
 
-git submodule update --init --recursive 
+#git submodule update --init --recursive 
 
 cd llvm-project
 rm -rf build
@@ -85,5 +85,6 @@ echo 4.0.0 > ${INSTALL_DIR}/rocm/.info/version
 echo 4.0.0 > ${INSTALL_DIR}/rocm/.info/version-dev
 echo 4.0.0 > ${INSTALL_DIR}/rocm/.info/version-utils
 
-ln -s ${INSTALL_DIR}/rocm/hip/include/hip ${INSTALL_DIR}/rocm/.
-
+ln -s ${INSTALL_DIR}/rocm/hip/include/hip ${INSTALL_DIR}/rocm/include/.
+ln -s ${INSTALL_DIR}/rocm/hip/bin/hipcc ${INSTALL_DIR}/rocm/bin/.
+ln -s ${INSTALL_DIR}/rocm/hip/lib/libamdhip64.so ${INSTALL_DIR}/rocm/lib/.
