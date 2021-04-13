@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-INSTALL_DIR=/home/mchow009/.opt 
+INSTALL_DIR=/home/danwong/.opt 
 cwd=$(pwd)
 
 #git submodule update --init --recursive 
@@ -41,7 +41,7 @@ cd ${cwd}
 cd ROCR-Runtime/src
 rm -rf build
 mkdir build && cd build
-CC=${CC_DIR} CXX=${CXX_DIR} cmake -DCMAKE_INSTALL_PREFIX=${INSTALL_DIR}/rocm -DCMAKE_PREFIX_PATH="${INSTALL_DIR}/rocm/include;${INSTALL_DIR}/rocm/lib" ..
+CC=${CC_DIR} CXX=${CXX_DIR} cmake -DCMAKE_INSTALL_PREFIX=${INSTALL_DIR}/rocm -DCMAKE_PREFIX_PATH="${INSTALL_DIR}/rocm/include;${INSTALL_DIR}/rocm/lib;${INSTALL_DIR}/rocm/rocdl" ..
 make -j 
 make install
 cd ${cwd}
