@@ -27,7 +27,7 @@
 	url = git@github.com:RadeonOpenCompute/rocminfo.git
 [submodule "ROCclr"]
 	path = ROCclr
-	url = git@github.com:ROCm-Developer-Tools/ROCclr.git
+	url = git@github.com:socal-ucr/ROCclr.git
 [submodule "llvm-project"]
 	path = llvm-project
 	url = git@github.com:RadeonOpenCompute/llvm-project.git
