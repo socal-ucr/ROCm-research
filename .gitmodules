@@ -10,6 +10,7 @@
 [submodule "HIP"]
 	path = HIP
 	url = git@github.com:socal-ucr/HIP.git
+	branch = RTKernel-HIP
 [submodule "ROCR-Runtime"]
 	path = ROCR-Runtime
 	url = git@github.com:socal-ucr/ROCR-Runtime.git
