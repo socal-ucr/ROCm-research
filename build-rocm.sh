@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-INSTALL_DIR=/home/danwong/.opt 
+INSTALL_DIR=/home/mrezv002/.opt 
 cwd=$(pwd)
 
 #git submodule update --init --recursive 
