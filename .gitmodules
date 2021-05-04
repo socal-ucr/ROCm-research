@@ -14,6 +14,7 @@
 [submodule "ROCR-Runtime"]
 	path = ROCR-Runtime
 	url = git@github.com:socal-ucr/ROCR-Runtime.git
+	branch = RTKernel-ROCR
 [submodule "ROCK-Kernel-Driver"]
 	path = ROCK-Kernel-Driver
 	url = git@github.com:socal-ucr/ROCK-Kernel-Driver.git
@@ -29,6 +30,7 @@
 [submodule "ROCclr"]
 	path = ROCclr
 	url = git@github.com:socal-ucr/ROCclr.git
+	branch = RTKernel-ROCclr
 [submodule "llvm-project"]
 	path = llvm-project
 	url = git@github.com:RadeonOpenCompute/llvm-project.git
