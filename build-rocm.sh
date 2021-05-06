@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 
-INSTALL_DIR=/home/danwong/.opt 
+INSTALL_DIR=$HOME/.opt 
 cwd=$(pwd)
 
-#git submodule update --init --recursive 
+git submodule update --init --recursive 
 
 cd llvm-project
 rm -rf build
