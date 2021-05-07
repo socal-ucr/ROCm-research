@@ -13,7 +13,6 @@ cwd=$(pwd)
 
 mkdir -p $INSTALL_DIR
 git submodule update --init --recursive 
-git submodule update --recursive --remote 
 
 cd llvm-project
 rm -rf build
