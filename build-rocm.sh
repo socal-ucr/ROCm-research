@@ -2,17 +2,16 @@
 
 # exit when any command fails
 set -e
-
 # keep track of the last executed command
 trap 'last_command=$current_command; current_command=$BASH_COMMAND' DEBUG
 # echo an error message before exiting
-trap 'echo "\"${last_command}\" command filed with exit code $?."' EXIT
+trap 'if [ $? -ne 0 ]; then echo "\"${last_command}\" command failed with exit code $?."; fi;' EXIT;
 
 INSTALL_DIR=${HOME}/.opt
 cwd=$(pwd)
 
 mkdir -p $INSTALL_DIR
-git submodule update --init --recursive 
+git submodule update --init --recursive
 
 cd llvm-project
 rm -rf build
@@ -89,11 +88,22 @@ make
 make install
 cd ${cwd}
 
-mkdir ${INSTALL_DIR}/rocm/.info
-echo 4.1.1 > ${INSTALL_DIR}/rocm/.info/version
-echo 4.1.1 > ${INSTALL_DIR}/rocm/.info/version-dev
-echo 4.1.1 > ${INSTALL_DIR}/rocm/.info/version-utils
+if [ ! -d "${INSTALL_DIR}/rocm/.info" ]; then
+    mkdir ${INSTALL_DIR}/rocm/.info
+    echo 4.1.1 > ${INSTALL_DIR}/rocm/.info/version
+    echo 4.1.1 > ${INSTALL_DIR}/rocm/.info/version-dev
+    echo 4.1.1 > ${INSTALL_DIR}/rocm/.info/version-utils
+fi
 
-ln -s ${INSTALL_DIR}/rocm/hip/include/hip ${INSTALL_DIR}/rocm/include/.
-ln -s ${INSTALL_DIR}/rocm/hip/bin/hipcc ${INSTALL_DIR}/rocm/bin/.
-ln -s ${INSTALL_DIR}/rocm/hip/lib/libamdhip64.so ${INSTALL_DIR}/rocm/lib/.
+if [ ! -d "${INSTALL_DIR}/rocm/include/hip" ]; then
+    echo "LINKING hip/include/hip"
+    ln -s ${INSTALL_DIR}/rocm/hip/include/hip ${INSTALL_DIR}/rocm/include/.
+fi
+if [ ! -f "${INSTALL_DIR}/rocm/bin/hipcc" ]; then
+    echo "LINKING hip/bin/hipcc"
+    ln -s ${INSTALL_DIR}/rocm/hip/bin/hipcc ${INSTALL_DIR}/rocm/bin/.
+fi
+if [ ! -f "${INSTALL_DIR}/rocm/lib/libamdhip64.so" ]; then
+    echo "LINKING hip/lib/libamdhip64.so"
+    ln -s ${INSTALL_DIR}/rocm/hip/lib/libamdhip64.so ${INSTALL_DIR}/rocm/lib/.
+fi
