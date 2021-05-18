@@ -37,3 +37,7 @@
 [submodule "ROCm-OpenCL-Runtime"]
 	path = ROCm-OpenCL-Runtime
 	url = git@github.com:RadeonOpenCompute/ROCm-OpenCL-Runtime.git
+[submodule "HIP-Examples"]
+	path = HIP-Examples
+	url = git@github.com:socal-ucr/HIP-Examples.git
+	branch = RTKernel-HIPExamples
