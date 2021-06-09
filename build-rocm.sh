@@ -1,5 +1,12 @@
 #!/usr/bin/env bash
 
+# exit when any command fails
+set -e
+# keep track of the last executed command
+trap 'last_command=$current_command; current_command=$BASH_COMMAND' DEBUG
+# echo an error message before exiting
+trap 'if [ $? -ne 0 ]; then echo "\"${last_command}\" command failed with exit code $?."; fi;' EXIT;
+
 INSTALL_DIR=/home/mrezv002/.opt 
 cwd=$(pwd)
 
@@ -38,13 +45,13 @@ CXX_DIR=${INSTALL_DIR}/rocm/llvm/bin/clang++
 #make install
 #cd ${cwd}
 
-cd ROCR-Runtime/src
-rm -rf build
-mkdir build && cd build
-CC=${CC_DIR} CXX=${CXX_DIR} cmake -DCMAKE_INSTALL_PREFIX=${INSTALL_DIR}/rocm -DCMAKE_PREFIX_PATH="${INSTALL_DIR}/rocm/include;${INSTALL_DIR}/rocm/lib;${INSTALL_DIR}/rocm/rocdl" ..
-make -j 
-make install
-cd ${cwd}
+#cd ROCR-Runtime/src
+#rm -rf build
+#mkdir build && cd build
+#CC=${CC_DIR} CXX=${CXX_DIR} cmake -DCMAKE_INSTALL_PREFIX=${INSTALL_DIR}/rocm -DCMAKE_PREFIX_PATH="${INSTALL_DIR}/rocm/include;${INSTALL_DIR}/rocm/lib;${INSTALL_DIR}/rocm/rocdl" ..
+#make -j 
+#make install
+#cd ${cwd}
 
 #cd ROCm-CompilerSupport/lib/comgr
 #rm -rf build
@@ -56,18 +63,27 @@ cd ${cwd}
 
 ROCclr_DIR="$(readlink -f ROCclr)"
 OPENCL_DIR="$(readlink -f ROCm-OpenCL-Runtime)"
-cd ${ROCclr_DIR}
-rm -rf build
-mkdir build && cd build
-CC=${CC_DIR} CXX=${CXX_DIR} cmake -DCMAKE_PREFIX_PATH="${INSTALL_DIR}/rocm/comgr" -DOPENCL_DIR=${OPENCL_DIR} -DCMAKE_INSTALL_PREFIX=${INSTALL_DIR}/rocm/rocclr ..
-make -j
-make install
-cd ${cwd}
+
+#cd ${ROCclr_DIR}
+#rm -rf build
+#mkdir build && cd build
+#CC=${CC_DIR} CXX=${CXX_DIR} cmake -DCMAKE_PREFIX_PATH="${INSTALL_DIR}/rocm/comgr" -DOPENCL_DIR=${OPENCL_DIR} -DCMAKE_INSTALL_PREFIX=${INSTALL_DIR}/rocm/rocclr ..
+#make -j
+#make install
+#cd ${cwd}
 
 cd HIP
 rm -rf build
 mkdir build && cd build
-CC=${CC_DIR} CXX=${CXX_DIR} cmake -DCMAKE_INSTALL_PREFIX=${INSTALL_DIR}/rocm/hip -DHIP_COMPILER=clang -DCMAKE_BUILD_TYPE=Release -DHIP_PLATFORM=rocclr -DOPENCL_DIR=${INSTALL_DIR}/rocm/opencl -DCMAKE_PREFIX_PATH="${INSTALL_DIR}/rocm/llvm;${INSTALL_DIR}/rocm/rocclr;${INSTALL_DIR}/rocm/lib/cmake/hsa-runtime64/;${INSTALL_DIR}/rocm/comgr" -DHSA_PATH=${INSTALL_DIR}/rocm/hsa -DROCM_PATH=${INSTALL_DIR}/rocm ..
+
+################## Probably incomplete
+
+#CC=${CC_DIR} CXX=${CXX_DIR} cmake -DCMAKE_INSTALL_PREFIX=${INSTALL_DIR}/rocm/hip -DHIP_COMPILER=clang -DCMAKE_BUILD_TYPE=Release -DHIP_PLATFORM=rocclr -DOPENCL_DIR=${INSTALL_DIR}/rocm/opencl -DCMAKE_PREFIX_PATH="${INSTALL_DIR}/rocm/llvm;${INSTALL_DIR}/rocm/rocclr;${INSTALL_DIR}/rocm/lib/cmake/hsa-runtime64/;${INSTALL_DIR}/rocm/comgr" -DHSA_PATH=${INSTALL_DIR}/rocm/hsa -DROCM_PATH=${INSTALL_DIR}/rocm ..
+
+##################
+
+CC=${CC_DIR} CXX=${CXX_DIR} cmake -DCMAKE_INSTALL_PREFIX=${INSTALL_DIR}/rocm/hip -DHIP_COMPILER=clang -DHIP_CLANG_PATH=${INSTALL_DIR}/rocm/llvm/bin -DCMAKE_BUILD_TYPE=Release -DHIP_PLATFORM=rocclr -DOPENCL_DIR=${INSTALL_DIR}/rocm/opencl -DCMAKE_PREFIX_PATH="${INSTALL_DIR}/rocm/llvm;${ROCclr_DIR}/build;${INSTALL_DIR}/rocm/lib/cmake/hsa-runtime64;${INSTALL_DIR}/rocm/comgr;${INSTALL_DIR}/rocm" -DHSA_PATH=${INSTALL_DIR}/rocm/hsa -DROCM_PATH=${INSTALL_DIR}/rocm -DDEVICE_LIB_PATH=${INSTALL_PATH}/rocm.rocdl ..
+
 make -j
 make install
 cd ${cwd}
@@ -80,10 +96,10 @@ cd ${cwd}
 #make install
 #cd ${cwd}
 
-mkdir ${INSTALL_DIR}/rocm/.info
-echo 4.0.0 > ${INSTALL_DIR}/rocm/.info/version
-echo 4.0.0 > ${INSTALL_DIR}/rocm/.info/version-dev
-echo 4.0.0 > ${INSTALL_DIR}/rocm/.info/version-utils
+#mkdir ${INSTALL_DIR}/rocm/.info
+#echo 4.0.0 > ${INSTALL_DIR}/rocm/.info/version
+#echo 4.0.0 > ${INSTALL_DIR}/rocm/.info/version-dev
+#echo 4.0.0 > ${INSTALL_DIR}/rocm/.info/version-utils
 
 #ln -s ${INSTALL_DIR}/rocm/hip/include/hip ${INSTALL_DIR}/rocm/include/.
 #ln -s ${INSTALL_DIR}/rocm/hip/bin/hipcc ${INSTALL_DIR}/rocm/bin/.

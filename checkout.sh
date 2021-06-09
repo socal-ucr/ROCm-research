@@ -22,6 +22,11 @@ cd ROCT-Thunk-Interface
 git checkout RTKernel-4.1.x
 cd ${cwd}
 
+#HIP-Examples
+cd ROCT-Thunk-Interface
+git checkout RTKernel-4.1.x
+cd ${cwd}
+
 #ROCm-CompilerSupport
 cd ROCm-CompilerSupport
 git checkout roc-4.1.x
