@@ -36,4 +36,4 @@
 	url = git@github.com:RadeonOpenCompute/ROCm-OpenCL-Runtime.git
 [submodule "rocprofiler"]
 	path = rocprofiler
-	url = git@github.com:socal-ucr/rocprofiler.git
+	url = https://github.com/socal-ucr/rocprofiler
