@@ -217,9 +217,9 @@ done
 
 if [ ! -d "${INSTALL_DIR}/rocm/.info" ]; then
     mkdir ${INSTALL_DIR}/rocm/.info
-    echo 4.1.1 > ${INSTALL_DIR}/rocm/.info/version
-    echo 4.1.1 > ${INSTALL_DIR}/rocm/.info/version-dev
-    echo 4.1.1 > ${INSTALL_DIR}/rocm/.info/version-utils
+    echo 4.1.2 > ${INSTALL_DIR}/rocm/.info/version
+    echo 4.1.2 > ${INSTALL_DIR}/rocm/.info/version-dev
+    echo 4.1.2 > ${INSTALL_DIR}/rocm/.info/version-utils
 fi
 
 if [ ! -d "${INSTALL_DIR}/rocm/include/hip" ]; then
