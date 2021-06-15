@@ -37,3 +37,6 @@
 [submodule "rocprofiler"]
 	path = rocprofiler
 	url = https://github.com/socal-ucr/rocprofiler
+[submodule "HIP-Examples"]
+	path = HIP-Examples
+	url = https://github.com/ROCm-Developer-Tools/HIP-Examples.git
