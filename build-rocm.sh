@@ -180,14 +180,25 @@ rocminfo(){
     clean;
   fi
   cd build
-  CC=${CC_DIR} CXX=${CXX_DIR} cmake -DCMAKE_PREFIX_PATH=${INSTALL_DIR}/rocm  -DCMAKE_INSTALL_BINDIR=${INSTALL_DIR}/rocm/bin ..
-  make
+  CC=${CC_DIR} CXX=${CXX_DIR} cmake -DCMAKE_PREFIX_PATH=${INSTALL_DIR}/rocm -DCMAKE_INSTALL_BINDIR=${INSTALL_DIR}/rocm/bin ..
+  make -j
   make install
   cd ${cwd}
 }
 
+rocprofiler(){
+  cd rocprofiler
+  if [ "$CLEAN" = true ] ; then
+    clean;
+  fi
+  cd build
+  CC=${CC_DIR} CXX=${CXX_DIR} cmake -DCMAKE_PREFIX_PATH="${INSTALL_DIR}/rocm/include/hsa;${INSTALL_DIR}/rocm" -DCMAKE_INSTALL_PREFIX=${INSTALL_DIR}/rocm/rocprofiler -DCMAKE_INSTALL_BINDIR=${INSTALL_DIR}/rocm/bin ..
+  make -j
+  make install
+  cd ${cwd}
+}
 
-declare -a TARGETS=("llvm-project" "rocm-cmake" "ROCm-Device-Libs" "ROCT-Thunk-Interface" "ROCR-Runtime" "ROCm-CompilerSupport" "ROCclr" "HIP" "rocminfo")
+declare -a TARGETS=("llvm-project" "rocm-cmake" "ROCm-Device-Libs" "ROCT-Thunk-Interface" "ROCR-Runtime" "ROCm-CompilerSupport" "ROCclr" "HIP" "rocminfo" "rocprofiler")
 print-all(){
   for i in "${TARGETS[@]}"
   do
