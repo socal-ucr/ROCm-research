@@ -17,15 +17,18 @@ clean(){
 
 usage(){
   echo "this script installs ROCm on ~/.opt/rocm"
-  echo "usage:"
-  echo "build-rocm.sh [-a/--all] [-c/--clean] [-ct/--compile-tool]"
+  echo "usage: (ATTENTION: args order is important)"
+  echo "build-rocm.sh [-c/--clean] [-a/--all] [-ct/--compile-tool]"
   echo "Options:"
-  echo "-a/--all:            Compile the whole ROCm stack (incompatible with -ct)" 
   echo "-c/--clean:          Removes build directory before compiling (default: disabled)"
+  echo "-a/--all:            Compile the whole ROCm stack (incompatible with -ct)" 
   echo "-ct/--compile-tool:  Compiles a specific tool (incompatible with -a)" 
 }
 
-TARGET=""
+declare -a TOOLS=("llvm-project" "rocm-cmake" "ROCm-Device-Libs" "ROCT-Thunk-Interface" "ROCR-Runtime" "ROCm-CompilerSupport" "ROCclr" "HIP" "rocminfo" "rocprofiler")
+TARGET=()
+ALL=true
+CLEAN=false
 while [[ $# -gt 0 ]]
 do
   key="$1"
@@ -33,43 +36,32 @@ do
   case $key in
     -a|--all)
       ALL=true
-      shift # past argument
-      if [ -n "${TARGET}" ]; then
-	echo "Error: -a/--all and -ct/-compile-tool are set, see usage:"
-	usage;
-        exit 0;
-      fi
+      TARGET=${TOOLS[@]}
+      break
     ;;
     -c|--clean)
       CLEAN=true
       shift # past argument
     ;;
     -ct|--compile-tool)
-      TARGET="$2"
-      if [ "$ALL" = true ] ; then
-	echo "Error: -a/-all and -ct/--compile-tool are set, see usage:"
-	usage;
-        exit 0;
-      fi
-      shift # past argument
-      shift # past value
+      TARGET+=("${@:2}")
+      ALL=false
+      break
     ;;
     *)    # unknown option
       usage
+      break
     ;;
   esac
 done
 
 if [ "$ALL" = true ] ; then
-  echo "Compiling all directories"
+  echo "INFO: compiling all directories"
 fi
 if [ -n "${TARGET}" ] ; then
-  echo "Compiling: ${TARGET}"
+  echo "INFO: compiling: ${TARGET[@]}"
 fi
-if [ "$CLEAN" = true ] ; then
-  echo "Cleaning enabled"
-fi
-
+echo "INFO: clean flag is set to: ${CLEAN}"
 
 mkdir -p $INSTALL_DIR
 #git submodule update --init --recursive
@@ -198,32 +190,30 @@ rocprofiler(){
   cd ${cwd}
 }
 
-declare -a TARGETS=("llvm-project" "rocm-cmake" "ROCm-Device-Libs" "ROCT-Thunk-Interface" "ROCR-Runtime" "ROCm-CompilerSupport" "ROCclr" "HIP" "rocminfo" "rocprofiler")
 print-all(){
-  for i in "${TARGETS[@]}"
+  for i in "${TOOLS[@]}"
   do
     printf "%s, " "$i"
   done
   echo ""
 }
 
-if [ -n "${TARGET}" ] ; then
-  if [[ " ${TARGETS[@]} " =~ " ${TARGET} " ]]; then
-    # whatever you want to do when array contains value
-    TARGETS=("${TARGET}")
-  else
-    echo "${TARGET} is not valid, choose from the below list:"
-    print-all
-    exit 0
-  fi
-fi
-
-for i in "${TARGETS[@]}"
+for TOOL in "${TARGET[@]}"
 do
-  printf "Compiling: %s\n" "$i"
-  eval "${i}"
-  echo "${i} finished, cont?"
-  read f
+  if [[ ! " ${TOOLS[@]} " =~ " ${TOOL} " ]]; then
+    # whatever you want to do when array doesn't contain value
+    echo "${TOOL} is not supported. Suported tools:"
+    print-all
+    exit -1
+  fi
+  printf "Compiling: %s ... " "$TOOL"
+  eval "${TOOL} &> /tmp/${TOOL}_compile_log"
+  if [ $? -eq 0 ]; then
+    echo "successful"
+  else
+    echo "failed, check /tmp/${TOOL}_compile_log"	   
+    exit 1
+  fi
 done
 
 if [ ! -d "${INSTALL_DIR}/rocm/.info" ]; then
