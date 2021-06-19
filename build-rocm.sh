@@ -198,7 +198,7 @@ print-all(){
   echo ""
 }
 
-for TOOL in "${TARGET[@]}"
+for TOOL in "${TOOLS[@]}"
 do
   if [[ ! " ${TOOLS[@]} " =~ " ${TOOL} " ]]; then
     # whatever you want to do when array doesn't contain value
