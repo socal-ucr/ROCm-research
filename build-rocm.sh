@@ -27,7 +27,6 @@ usage(){
 
 declare -a TOOLS=("llvm-project" "rocm-cmake" "ROCm-Device-Libs" "ROCT-Thunk-Interface" "ROCR-Runtime" "ROCm-CompilerSupport" "ROCclr" "HIP" "rocminfo" "rocprofiler")
 TARGET=()
-ALL=true
 CLEAN=false
 while [[ $# -gt 0 ]]
 do
@@ -35,8 +34,7 @@ do
 
   case $key in
     -a|--all)
-      ALL=true
-      TARGET=${TOOLS[@]}
+      TARGET+=("${TOOLS[@]}")
       break
     ;;
     -c|--clean)
@@ -45,19 +43,16 @@ do
     ;;
     -ct|--compile-tool)
       TARGET+=("${@:2}")
-      ALL=false
       break
     ;;
     *)    # unknown option
       usage
+      exit -1
       break
     ;;
   esac
 done
 
-if [ "$ALL" = true ] ; then
-  echo "INFO: compiling all directories"
-fi
 if [ -n "${TARGET}" ] ; then
   echo "INFO: compiling: ${TARGET[@]}"
 fi
@@ -198,7 +193,7 @@ print-all(){
   echo ""
 }
 
-for TOOL in "${TOOLS[@]}"
+for TOOL in "${TARGET[@]}"
 do
   if [[ ! " ${TOOLS[@]} " =~ " ${TOOL} " ]]; then
     # whatever you want to do when array doesn't contain value
