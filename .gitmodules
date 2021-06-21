@@ -40,3 +40,6 @@
 [submodule "HIP-Examples"]
 	path = HIP-Examples
 	url = https://github.com/ROCm-Developer-Tools/HIP-Examples.git
+[submodule "roctracer"]
+	path = roctracer
+	url = https://github.com/socal-ucr/roctracer

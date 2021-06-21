@@ -25,7 +25,7 @@ usage(){
   echo "-ct/--compile-tool:  Compiles a specific tool (incompatible with -a)" 
 }
 
-declare -a TOOLS=("llvm-project" "rocm-cmake" "ROCm-Device-Libs" "ROCT-Thunk-Interface" "ROCR-Runtime" "ROCm-CompilerSupport" "ROCclr" "HIP" "rocminfo" "rocprofiler")
+declare -a TOOLS=("llvm-project" "rocm-cmake" "ROCm-Device-Libs" "ROCT-Thunk-Interface" "ROCR-Runtime" "ROCm-CompilerSupport" "ROCclr" "HIP" "rocminfo" "roctracer" "rocprofiler")
 TARGET=()
 CLEAN=false
 while [[ $# -gt 0 ]]
@@ -168,6 +168,18 @@ rocminfo(){
   fi
   cd build
   CC=${CC_DIR} CXX=${CXX_DIR} cmake -DCMAKE_PREFIX_PATH=${INSTALL_DIR}/rocm -DCMAKE_INSTALL_BINDIR=${INSTALL_DIR}/rocm/bin ..
+  make -j
+  make install
+  cd ${cwd}
+}
+
+roctracer(){
+  cd roctracer
+  if [ "$CLEAN" = true ] ; then
+    clean;
+  fi
+  cd build
+  CC=${CC_DIR} CXX=${CXX_DIR} cmake -DCMAKE_PREFIX_PATH="${INSTALL_DIR}/rocm" -DCMAKE_INSTALL_PREFIX=${INSTALL_DIR}/rocm -DHIP_VDI=1 ..
   make -j
   make install
   cd ${cwd}

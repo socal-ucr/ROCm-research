@@ -15,6 +15,7 @@ vllvm_project="roc-4.1.x"
 vrocm_cmake="roc-4.0.x"
 vrocm_smi_lib="release/rocm-rel-4.1"
 vrocminfo="release/rocm-rel-4.1"
+vroctracer="rocm-4.1.x"
 vrocprofiler="rocm-4.1.x"
 
 #HIP
@@ -98,6 +99,13 @@ cd ${cwd}
 cd rocminfo
 printf "rocminfo version:             "
 git checkout ${vrocminfo} &> /dev/null && printf "${vrocminfo}"
+echo ""
+cd ${cwd}
+
+#roctracer
+cd roctracer
+printf "roctracer version:            "
+git checkout ${vroctracer} &> /dev/null && printf "${vroctracer}"
 echo ""
 cd ${cwd}
 
