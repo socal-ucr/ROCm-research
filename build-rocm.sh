@@ -49,7 +49,7 @@ cd ${cwd}
 cd ROCR-Runtime/src
 rm -rf build
 mkdir build && cd build
-CC=${CC_DIR} CXX=${CXX_DIR} cmake -DCMAKE_INSTALL_PREFIX=${INSTALL_DIR}/rocm -DCMAKE_PREFIX_PATH="${INSTALL_DIR}/rocm/include;${INSTALL_DIR}/rocm/lib;${INSTALL_DIR}/rocm/rocdl" ..
+CC=${CC_DIR} CXX=${CXX_DIR} cmake -DCMAKE_INSTALL_PREFIX=${INSTALL_DIR}/rocm -DCMAKE_PREFIX_PATH="${INSTALL_DIR}/rocm/include;${INSTALL_DIR}/rocm/lib;${INSTALL_DIR}/rocm/rocdl" -DCMAKE_BUILD_TYPE="RELEASE" ..
 make -j 
 make install
 cd ${cwd}
@@ -106,4 +106,8 @@ fi
 if [ ! -f "${INSTALL_DIR}/rocm/lib/libamdhip64.so" ]; then
     echo "LINKING hip/lib/libamdhip64.so"
     ln -s ${INSTALL_DIR}/rocm/hip/lib/libamdhip64.so ${INSTALL_DIR}/rocm/lib/.
+fi
+if [ ! -d "${INSTALL_DIR}/rocm/amdgcn" ]; then
+    echo "LINKING hip/include/hip"
+    ln -s ${INSTALL_DIR}/rocm/rocdl/amdgcn ${INSTALL_DIR}/rocm/.
 fi
