@@ -46,6 +46,7 @@ CC=${CC_DIR} CXX=${CXX_DIR} cmake -DCMAKE_INSTALL_PREFIX=${INSTALL_DIR}/rocm ..
 make install
 cd ${cwd}
 
+
 cd ROCR-Runtime/src
 rm -rf build
 mkdir build && cd build
@@ -90,9 +91,9 @@ cd ${cwd}
 
 if [ ! -d "${INSTALL_DIR}/rocm/.info" ]; then
     mkdir ${INSTALL_DIR}/rocm/.info
-    echo 4.1.1 > ${INSTALL_DIR}/rocm/.info/version
-    echo 4.1.1 > ${INSTALL_DIR}/rocm/.info/version-dev
-    echo 4.1.1 > ${INSTALL_DIR}/rocm/.info/version-utils
+    echo 4.1.1-34 > ${INSTALL_DIR}/rocm/.info/version
+    echo 4.1.1-34 > ${INSTALL_DIR}/rocm/.info/version-dev
+    echo 4.1.1-34 > ${INSTALL_DIR}/rocm/.info/version-utils
 fi
 
 if [ ! -d "${INSTALL_DIR}/rocm/include/hip" ]; then
