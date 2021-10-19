@@ -225,9 +225,9 @@ done
 
 if [ ! -d "${INSTALL_DIR}/rocm/.info" ]; then
     mkdir ${INSTALL_DIR}/rocm/.info
-    echo 4.1.2 > ${INSTALL_DIR}/rocm/.info/version
-    echo 4.1.2 > ${INSTALL_DIR}/rocm/.info/version-dev
-    echo 4.1.2 > ${INSTALL_DIR}/rocm/.info/version-utils
+    echo 4.1.1-34 > ${INSTALL_DIR}/rocm/.info/version
+    echo 4.1.1-34 > ${INSTALL_DIR}/rocm/.info/version-dev
+    echo 4.1.1-34 > ${INSTALL_DIR}/rocm/.info/version-utils
 fi
 
 if [ ! -d "${INSTALL_DIR}/rocm/include/hip" ]; then
@@ -241,4 +241,12 @@ fi
 if [ ! -f "${INSTALL_DIR}/rocm/lib/libamdhip64.so" ]; then
     echo "LINKING hip/lib/libamdhip64.so"
     ln -s ${INSTALL_DIR}/rocm/hip/lib/libamdhip64.so ${INSTALL_DIR}/rocm/lib/.
+fi
+if [ ! -f "${INSTALL_DIR}/rocm/lib/libhiprand.so" ]; then
+    echo "LINKING hip/lib/libhiprand.so"
+    ln -s ${INSTALL_DIR}/rocm/hiprand/lib/* ${INSTALL_DIR}/rocm/lib/.
+fi
+if [ ! -d "${INSTALL_DIR}/rocm/amdgcn" ]; then
+    echo "LINKING hip/include/hip"
+    ln -s ${INSTALL_DIR}/rocm/rocdl/amdgcn ${INSTALL_DIR}/rocm/.
 fi
