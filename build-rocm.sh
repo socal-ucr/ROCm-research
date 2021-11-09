@@ -11,19 +11,19 @@ INSTALL_DIR=${HOME}/.opt
 cwd=$(pwd)
 CMAKE=/usr/local/bin/cmake
 
+CC_DIR=${INSTALL_DIR}/rocm/llvm/bin/clang
+CXX_DIR=${INSTALL_DIR}/rocm/llvm/bin/clang++
+
 mkdir -p $INSTALL_DIR
 git submodule update --init --recursive
 
 cd llvm-project
 rm -rf build
 mkdir -p build && cd build
-${CMAKE} -DCMAKE_INSTALL_PREFIX=${INSTALL_DIR}/rocm/llvm -DCMAKE_BUILD_TYPE=Release -DLLVM_ENABLE_ASSERTIONS=1 -DLLVM_TARGETS_TO_BUILD="AMDGPU;X86" -DLLVM_ENABLE_PROJECTS="clang;lld;compiler-rt" -DLLVM_INSTALL_UTILS=1 -G "Unix Makefiles" ../llvm
+${CMAKE} -DCMAKE_INSTALL_PREFIX=${INSTALL_DIR}/rocm/llvm -DCMAKE_BUILD_TYPE=Release -DLLVM_ENABLE_ASSERTIONS=1 -DLLVM_TARGETS_TO_BUILD="AMDGPU;X86" -DLLVM_ENABLE_PROJECTS="llvm;clang;lld;compiler-rt" -DLLVM_INSTALL_UTILS=1 -G "Unix Makefiles" ../llvm
 make -j
 make install
 cd ${cwd}
-
-CC_DIR=${INSTALL_DIR}/rocm/llvm/bin/clang
-CXX_DIR=${INSTALL_DIR}/rocm/llvm/bin/clang++
 
 cd rocm-cmake
 rm -rf build
@@ -73,11 +73,15 @@ make -j
 make install
 cd ${cwd}
 
-cd HIP
-rm -rf build
-mkdir build && cd build
-CC=${CC_DIR} CXX=${CXX_DIR} ${CMAKE} -DCMAKE_INSTALL_PREFIX=${INSTALL_DIR}/rocm/hip -DHIP_COMPILER=clang -DHIP_CLANG_PATH=${INSTALL_DIR}/rocm/llvm/bin -DCMAKE_BUILD_TYPE=Release -DHIP_PLATFORM=rocclr -DOPENCL_DIR=${INSTALL_DIR}/rocm/opencl -DCMAKE_PREFIX_PATH="${INSTALL_DIR}/rocm/llvm;${ROCclr_DIR}/build;${INSTALL_DIR}/rocm/lib/cmake/hsa-runtime64;${INSTALL_DIR}/rocm/comgr;${INSTALL_DIR}/rocm" -DHSA_PATH=${INSTALL_DIR}/rocm/hsa -DROCM_PATH=${INSTALL_DIR}/rocm -DDEVICE_LIB_PATH=${INSTALL_PATH}/rocm/rocdl -DCMAKE_HIP_ARCHITECTURES=gfx906 ..
-make -j
+HIPAMD_DIR="$(readlink -f hipamd)"
+HIP_DIR="$(readlink -f HIP)"
+ROCclr_DIR="$(readlink -f ROCclr)"
+OPENCL_DIR="$(readlink -f ROCm-OpenCL-Runtime)"
+
+cd ${HIPAMD_DIR}
+rm -rf build; mkdir -p build; cd build
+CC=${CC_DIR} CXX=${CXX_DIR} ${CMAKE} -DHIP_COMMON_DIR=$HIP_DIR -DAMD_OPENCL_PATH=$OPENCL_DIR -DROCCLR_PATH=$ROCCLR_DIR -DCMAKE_INSTALL_PREFIX=${INSTALL_DIR}/rocm/hip -DHIP_COMPILER=clang -DHIP_CLANG_PATH=${INSTALL_DIR}/rocm/llvm/bin -DCMAKE_BUILD_TYPE=Release -DHIP_PLATFORM=rocclr -DOPENCL_DIR=${INSTALL_DIR}/rocm/opencl -DCMAKE_PREFIX_PATH="${INSTALL_DIR}/rocm/llvm;${ROCclr_DIR}/build;${INSTALL_DIR}/rocm/lib/cmake/hsa-runtime64;${INSTALL_DIR}/rocm/comgr;${INSTALL_DIR}/rocm" -DHSA_PATH=${INSTALL_DIR}/rocm/hsa -DROCM_PATH=${INSTALL_DIR}/rocm -DDEVICE_LIB_PATH=${INSTALL_PATH}/rocm/rocdl -DCMAKE_HIP_ARCHITECTURES=gfx906 ..
+make -j 
 make install
 cd ${cwd}
 
@@ -91,9 +95,9 @@ cd ${cwd}
 
 if [ ! -d "${INSTALL_DIR}/rocm/.info" ]; then
     mkdir ${INSTALL_DIR}/rocm/.info
-    echo 4.1.1-34 > ${INSTALL_DIR}/rocm/.info/version
-    echo 4.1.1-34 > ${INSTALL_DIR}/rocm/.info/version-dev
-    echo 4.1.1-34 > ${INSTALL_DIR}/rocm/.info/version-utils
+    echo 4.5.0-56 > ${INSTALL_DIR}/rocm/.info/version
+    echo 4.5.0-56 > ${INSTALL_DIR}/rocm/.info/version-dev
+    echo 4.5.0-56 > ${INSTALL_DIR}/rocm/.info/version-utils
 fi
 
 if [ ! -d "${INSTALL_DIR}/rocm/include/hip" ]; then
@@ -108,11 +112,7 @@ if [ ! -f "${INSTALL_DIR}/rocm/lib/libamdhip64.so" ]; then
     echo "LINKING hip/lib/libamdhip64.so"
     ln -s ${INSTALL_DIR}/rocm/hip/lib/libamdhip64.so ${INSTALL_DIR}/rocm/lib/.
 fi
-if [ ! -f "${INSTALL_DIR}/rocm/lib/libhiprand.so" ]; then
-    echo "LINKING hip/lib/libhiprand.so"
-    ln -s ${INSTALL_DIR}/rocm/hiprand/lib/* ${INSTALL_DIR}/rocm/lib/.
-fi
 if [ ! -d "${INSTALL_DIR}/rocm/amdgcn" ]; then
-    echo "LINKING hip/include/hip"
+    echo "LINKING rocm/amdgcn"
     ln -s ${INSTALL_DIR}/rocm/rocdl/amdgcn ${INSTALL_DIR}/rocm/.
 fi

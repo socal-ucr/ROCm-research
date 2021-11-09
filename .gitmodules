@@ -13,9 +13,6 @@
 [submodule "ROCR-Runtime"]
 	path = ROCR-Runtime
 	url = git@github.com:socal-ucr/ROCR-Runtime.git
-[submodule "ROCK-Kernel-Driver"]
-	path = ROCK-Kernel-Driver
-	url = git@github.com:socal-ucr/ROCK-Kernel-Driver.git
 [submodule "ROCT-Thunk-Interface"]
 	path = ROCT-Thunk-Interface
 	url = git@github.com:socal-ucr/ROCT-Thunk-Interface.git
@@ -34,3 +31,6 @@
 [submodule "ROCm-OpenCL-Runtime"]
 	path = ROCm-OpenCL-Runtime
 	url = git@github.com:RadeonOpenCompute/ROCm-OpenCL-Runtime.git
+[submodule "hipamd"]
+	path = hipamd
+	url = git@github.com:ROCm-Developer-Tools/hipamd.git
