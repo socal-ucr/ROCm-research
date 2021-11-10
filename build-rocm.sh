@@ -120,6 +120,12 @@ if [ ! -f "${INSTALL_DIR}/rocm/lib/libamdhip64.so" ]; then
     echo "LINKING hip/lib/libamdhip64.so"
     ln -s ${INSTALL_DIR}/rocm/hip/lib/libamdhip64.so ${INSTALL_DIR}/rocm/lib/.
 fi
+if [ ! -f "${INSTALL_DIR}/rocm/lib/libamd_comgr.so.2.1" ]; then
+    echo "LINKING hip/lib/libamd_comgr.so"
+    ln -s ${INSTALL_DIR}/rocm/comgr/lib/libamd_comgr.so.2.1 ${INSTALL_DIR}/rocm/lib/.
+    ln -s ${INSTALL_DIR}/rocm/comgr/lib/libamd_comgr.so.2 ${INSTALL_DIR}/rocm/lib/.
+    ln -s ${INSTALL_DIR}/rocm/comgr/lib/libamd_comgr.so ${INSTALL_DIR}/rocm/lib/.
+fi
 if [ ! -d "${INSTALL_DIR}/rocm/amdgcn" ]; then
     echo "LINKING rocm/amdgcn"
     ln -s ${INSTALL_DIR}/rocm/rocdl/amdgcn ${INSTALL_DIR}/rocm/.
