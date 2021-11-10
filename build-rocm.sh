@@ -93,6 +93,14 @@ make
 make install
 cd ${cwd}
 
+cd rocm_smi_lib
+sed -i "s|/opt/rocm|${INSTALL_DIR}/rocm|" CMakeLists.txt # install to local directory does not require sudo
+rm -rf build && mkdir build && cd build
+CC=${CC_DIR} CXX=${CXX_DIR} ${CMAKE} -DCMAKE_PREFIX_PATH=${INSTALL_DIR}/rocm  ..
+make
+make install
+cd ${cwd}
+
 if [ ! -d "${INSTALL_DIR}/rocm/.info" ]; then
     mkdir ${INSTALL_DIR}/rocm/.info
     echo 4.5.0-56 > ${INSTALL_DIR}/rocm/.info/version
