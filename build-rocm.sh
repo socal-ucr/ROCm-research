@@ -63,16 +63,6 @@ make -j
 make install
 cd ${cwd}
 
-ROCclr_DIR="$(readlink -f ROCclr)"
-OPENCL_DIR="$(readlink -f ROCm-OpenCL-Runtime)"
-cd ${ROCclr_DIR}
-rm -rf build
-mkdir build && cd build
-CC=${CC_DIR} CXX=${CXX_DIR} ${CMAKE} -DCMAKE_PREFIX_PATH="${INSTALL_DIR}/rocm/comgr" -DOPENCL_DIR=${OPENCL_DIR} -DCMAKE_INSTALL_PREFIX=${INSTALL_DIR}/rocm/rocclr ..
-make -j
-make install
-cd ${cwd}
-
 HIPAMD_DIR="$(readlink -f hipamd)"
 HIP_DIR="$(readlink -f HIP)"
 ROCclr_DIR="$(readlink -f ROCclr)"
