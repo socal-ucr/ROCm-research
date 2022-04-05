@@ -33,4 +33,4 @@
 	url = git@github.com:RadeonOpenCompute/ROCm-OpenCL-Runtime.git
 [submodule "hipamd"]
 	path = hipamd
-	url = git@github.com:ROCm-Developer-Tools/hipamd.git
+	url = git@github.com:socal-ucr/hipamd.git
