@@ -6,7 +6,7 @@
 	url = git@github.com:socal-ucr/ROCm-Device-Libs.git
 [submodule "rocm_smi_lib"]
 	path = rocm_smi_lib
-	url = git@github.com:socal-ucr/rocm_smi_lib.git
+	url = git@github.com:RadeonOpenCompute/rocm_smi_lib.git
 [submodule "HIP"]
 	path = HIP
 	url = git@github.com:socal-ucr/HIP.git
@@ -33,4 +33,4 @@
 	url = git@github.com:RadeonOpenCompute/ROCm-OpenCL-Runtime.git
 [submodule "hipamd"]
 	path = hipamd
-	url = git@github.com:ROCm-Developer-Tools/hipamd.git
+	url = git@github.com:socal-ucr/hipamd.git
