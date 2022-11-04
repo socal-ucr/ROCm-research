@@ -105,6 +105,8 @@ fi
 if [ ! -f "${INSTALL_DIR}/rocm/bin/hipcc" ]; then
     echo "LINKING hip/bin/hipcc"
     ln -s ${INSTALL_DIR}/rocm/hip/bin/hipcc ${INSTALL_DIR}/rocm/bin/.
+    ln -s ${INSTALL_DIR}/rocm/hip/bin/hipcc.pl ${INSTALL_DIR}/rocm/bin/.
+    ln -s ${INSTALL_DIR}/rocm/hip/bin/hipvars.pm ${INSTALL_DIR}/rocm/bin/.
 fi
 if [ ! -f "${INSTALL_DIR}/rocm/lib/libamdhip64.so" ]; then
     echo "LINKING hip/lib/libamdhip64.so"
